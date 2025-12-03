@@ -1,5 +1,19 @@
-//BattleShip Game
-// Model
+/*:
+ ## CIS137 iOS/SWIFT Programming
+ 
+ ## Final Project
+ 
+ ## BattleShip Game
+ 
+ Student: Esmira Babayeva
+ 
+ Instructor: Hellen Pacheco
+ 
+ 02 December, 2025
+ 
+ */
+
+// Model.swift - Model
 
 
 
@@ -43,14 +57,17 @@ struct BattleshipGame {
     mutating func fire(at row: Int, col: Int) -> HitResult {
         let coord = Coordinate(row: row, col: col)
 
-        // Already guessed here?
+        // Already guessed!
         if grid[row][col] != .unknown {
             return .alreadyTried
         }
 
+        // HIT!
         if shipPositions.contains(coord) {
             grid[row][col] = .hit
             return .hit
+            
+        // MISS!
         } else {
             grid[row][col] = .miss
             return .miss
@@ -68,8 +85,7 @@ struct BattleshipGame {
         shipPositions.count
     }
 
-    // MARK: - Private ship placement
-
+    // Ship placement
     private mutating func placeShipsRandomly(lengths: [Int]) {
         shipPositions.removeAll()
 
@@ -106,7 +122,7 @@ struct BattleshipGame {
         }
     }
 
-    // Optional: create a new game with fresh ships
+    // Create a new game with fresh ships
     static func newGame(size: Int = 8, shipLengths: [Int] = [2, 3, 3]) -> BattleshipGame {
         BattleshipGame(size: size, shipLengths: shipLengths)
     }

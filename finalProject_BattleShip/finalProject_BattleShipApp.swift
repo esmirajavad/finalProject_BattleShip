@@ -1,9 +1,23 @@
-//
-//  finalProject_BattleShipApp.swift
-//  finalProject_BattleShip
-//
+/*:
+ ## CIS137 iOS/SWIFT Programming
+ 
+ ## Final Project
+ 
+ ## BattleShip Game
+ 
+ Student: Esmira Babayeva
+ 
+ Instructor: Hellen Pacheco
+ 
+ 02 December, 2025
+ 
+ */
 
-//
+//  finalProject_BattleShipApp.swift
+
+
+
+
 
 import SwiftUI
 

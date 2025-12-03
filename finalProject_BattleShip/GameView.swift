@@ -1,9 +1,25 @@
-//BattleShip Game
-// View
+/*:
+ ## CIS137 iOS/SWIFT Programming
+ ## Final Project
+ ## BattleShip Game
 
+ Student: Esmira Babayeva
+ Instructor: Hellen Pacheco
+ 02 December, 2025
+*/
 
+// GameView.swift - View
 
 import SwiftUI
+
+// Simple scale-only style for grid cells
+struct GridCellButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+    }
+}
 
 struct GameView: View {
     @ObservedObject var viewModel: BattleshipViewModel
@@ -25,28 +41,28 @@ struct GameView: View {
             .font(.subheadline)
             .padding(.horizontal)
 
-            // Grid
+            // Grid setup (8x8 or depending on size)
             let columns = Array(
                 repeating: GridItem(.flexible(), spacing: 4),
                 count: viewModel.size
             )
-            
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 4) {
-                    ForEach(0 ..< viewModel.size * viewModel.size, id: \.self) { index in
-                        let row = index / viewModel.size
-                        let col = index % viewModel.size
-                        // A single cell
+
+            // Grid (no ScrollView – it should fit on screen)
+            LazyVGrid(columns: columns, spacing: 4) {
+                ForEach(0 ..< viewModel.size * viewModel.size, id: \.self) { index in
+                    let row = index / viewModel.size
+                    let col = index % viewModel.size
+
+                    Button {
+                        viewModel.handleTap(row: row, col: col)
+                    } label: {
                         CellView(state: viewModel.cellState(row: row, col: col))
-                            .onTapGesture {
-                                viewModel.handleTap(row: row, col: col)
-                            }
                     }
+                    .buttonStyle(GridCellButtonStyle())
                 }
-                .padding()
             }
+            .padding()
             .frame(maxHeight: 350)
-            
 
             // Reset button
             Button("Reset Game") {

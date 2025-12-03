@@ -1,5 +1,20 @@
-//BattleShip Game
-// ModelView
+/*:
+ ## CIS137 iOS/SWIFT Programming
+ 
+ ## Final Project
+ 
+ ## BattleShip Game
+ 
+ Student: Esmira Babayeva
+ 
+ Instructor: Hellen Pacheco
+ 
+ 02 December, 2025
+ 
+ */
+
+
+// BattleshipViewModel.swift - ViewModel
 
 
 
@@ -68,7 +83,7 @@ class BattleshipViewModel: ObservableObject {
 
         switch result {
         case .alreadyTried:
-            // Don’t count this as a new shot
+            // Not to count this as a new shot
             statusMessage = "You already fired there!"
             return
 
@@ -85,17 +100,17 @@ class BattleshipViewModel: ObservableObject {
         // Check win
         if game.allShipsSunk {
             isGameOver = true
-            statusMessage = "You sank all ships in \(shotsFired) shots! 🎉"
+            statusMessage = "You sank all ships in \(shotsFired) shots!"
         }
         // Check loss (used all shots but ships still remain)
         else if shotsFired >= maxShots {
             isGameOver = true
-            statusMessage = "Out of shots! You lost. Ships remain at sea. 🚢"
+            statusMessage = "Out of shots! You lost. Ships remain at sea."
         }
 
-        // Not strictly required since @Published vars changed,
-        // but doesn't hurt to ensure updates:
-        objectWillChange.send()
+        // Not strictly required since @Published vars changed
+        // for future purposes
+        // objectWillChange.send()
     }
 
     func resetGame() {
