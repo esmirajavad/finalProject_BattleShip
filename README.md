@@ -31,7 +31,7 @@ Model: BattleshipGame, CellState, Coordinate, HitResult
 
 ViewModel: BattleshipViewModel
 
-Views: ContentView, GameView, CellView
+Views: ContentView, GameView (includes CellView)
 
 How to Play:
 
