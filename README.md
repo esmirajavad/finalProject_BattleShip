@@ -71,3 +71,7 @@ Instructor: Hellen Pacheco
 ## License
 
 This project was created for educational purposes.
+
+## Link to presentation:
+
+https://www.youtube.com/watch?v=6mCtNuksrpQ
